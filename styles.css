@@ -25,7 +25,8 @@
         --norse-black: #1a1a1a;
         --charcoal: #2a2a2a;
         --blood-red: #cc0000;
-        --mc-red: #ff0000;
+        --mc-red: #cf2342;
+        --mc-red-hover: #e63856;
         --dark-red: #990000;
         --crimson: #dc143c;
         --white: #ffffff;
@@ -179,9 +180,48 @@
     }
 
     .member-portal .member-btn:hover {
-        background: var(--mc-red);
+        background: var(--mc-red-hover);
         transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(255,0,0,0.3);
+        box-shadow: 0 10px 20px rgba(207, 35, 66, 0.3);
+    }
+
+    /* Language Toggle Styles */
+    .language-toggle {
+        margin-left: 20px;
+    }
+
+    .lang-btn {
+        background: var(--norse-black);
+        border: 2px solid var(--mc-red);
+        color: var(--white);
+        padding: 8px 20px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .lang-btn:hover {
+        background: var(--mc-red-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(207, 35, 66, 0.3);
+    }
+
+    /* Language visibility */
+    .en {
+        display: none;
+    }
+
+    body[data-lang="en"] .is {
+        display: none;
+    }
+
+    body[data-lang="en"] .en {
+        display: inline;
     }
 
     /* Hero Section */
@@ -298,12 +338,12 @@
 
     .cta-button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(255,0,0,0.3);
+        box-shadow: 0 15px 30px rgba(207, 35, 66, 0.3);
     }
 
     .cta-button.primary:hover {
-        background: var(--dark-red);
-        border-color: var(--dark-red);
+        background: var(--mc-red-hover);
+        border-color: var(--mc-red);
     }
 
     .cta-button.secondary:hover {
@@ -564,9 +604,9 @@
     }
 
     .add-to-cart:hover {
-        background: var(--dark-red);
+        background: var(--mc-red-hover);
         transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(255,0,0,0.4);
+        box-shadow: 0 10px 20px rgba(207, 35, 66, 0.4);
     }
 
     .add-to-cart:active::before {
@@ -885,9 +925,9 @@
     }
 
     .submit-btn:hover {
-        background: var(--dark-red);
+        background: var(--mc-red-hover);
         transform: translateY(-2px);
-        box-shadow: 0 15px 30px rgba(255,0,0,0.4);
+        box-shadow: 0 15px 30px rgba(207, 35, 66, 0.4);
     }
 
     /* Footer */
@@ -1232,9 +1272,9 @@
     }
 
     .auth-submit-btn:hover {
-        background: var(--dark-red);
+        background: var(--mc-red-hover);
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(255,0,0,0.4);
+        box-shadow: 0 10px 30px rgba(207, 35, 66, 0.4);
     }
 
     .auth-divider {
@@ -1609,7 +1649,7 @@
     }
 
     .modal-add-to-cart:hover {
-        background: var(--dark-red);
+        background: var(--mc-red-hover);
         transform: translateY(-2px);
     }
 
@@ -1656,7 +1696,7 @@
 
     .shop-product-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+        box-shadow: 0 10px 30px rgba(207, 35, 66, 0.3);
     }
     
     /* Shop Product Card Info */
@@ -1745,7 +1785,7 @@
     }
     
     .add-to-cart:hover:not(:disabled) {
-        background: var(--dark-red);
+        background: var(--mc-red-hover);
         transform: scale(1.02);
     }
     

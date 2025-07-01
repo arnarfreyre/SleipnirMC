@@ -255,6 +255,12 @@
                 <li><a href="about.html"><span class="is">Sagan</span><span class="en">Our Saga</span></a></li>
                 <li><a href="contact.html"><span class="is">Hafa Samband</span><span class="en">Contact</span></a></li>
             </ul>
+            <div class="language-toggle">
+                <button class="lang-btn" onclick="toggleLanguage()">
+                    <span class="is">EN</span>
+                    <span class="en">IS</span>
+                </button>
+            </div>
             <div class="member-portal">
                 <!-- Auth state will be loaded by auth.js -->
             </div>
@@ -342,6 +348,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="javascript/firebase-config.js"></script>
     <script src="javascript/auth.js"></script>
+    <script src="javascript/language.js"></script>
     <script>
         let userOrders = [];
         let currentTab = 'outstanding';

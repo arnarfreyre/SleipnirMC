@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sleipnir MC Reykjavík - Opinber Verslun</title>
+    <title>Sleipnir MC Reykjavík - Official Homepage</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Homepage specific styles */
@@ -85,11 +85,17 @@
                 <span class="location">REYKJAVÍK</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active"><span class="is">Heim</span><span class="en">Home</span></a></li>
+                <li><a href="Index.html" class="active"><span class="is">Heim</span><span class="en">Home</span></a></li>
                 <li><a href="shop.html"><span class="is">Verslun</span><span class="en">Shop</span></a></li>
                 <li><a href="about.html"><span class="is">Sagan</span><span class="en">Our Saga</span></a></li>
                 <li><a href="contact.html"><span class="is">Hafa Samband</span><span class="en">Contact</span></a></li>
             </ul>
+            <div class="language-toggle">
+                <button class="lang-btn" onclick="toggleLanguage()">
+                    <span class="is">EN</span>
+                    <span class="en">IS</span>
+                </button>
+            </div>
             <div class="member-portal">
                 <!-- Auth state will be loaded by auth.js -->
             </div>
@@ -103,16 +109,17 @@
         <div class="hero-logo-bg"></div>
         <div class="hero-content">
             <h1 class="hero-title viking-font">
-                NO DRUGS - NO ATTITUDE
+                NO DRUGS<br>
+                NO ATTITUDE
             </h1>
             <div class="cta-group">
                 <a href="shop.html" class="cta-button primary">
                     <span class="is">Versla</span>
                     <span class="en">Shop</span>
                 </a>
-                <a href="register.html" class="cta-button secondary">
-                    <span class="is">Verða Meðlimur</span>
-                    <span class="en">Become a Member</span>
+                <a href="about.html" class="cta-button secondary">
+                    <span class="is">Meðlimir</span>
+                    <span class="en">Members</span>
                 </a>
             </div>
         </div>
@@ -138,10 +145,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="javascript/firebase-config.js"></script>
     <script src="javascript/auth.js"></script>
+    <script src="javascript/language.js"></script>
     <script>
-        // Language toggle functionality
-        let currentLang = 'is';
-
         // Northern lights animation
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {

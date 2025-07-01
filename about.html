@@ -25,8 +25,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
+            width: 1200px;
+            height: 1200px;
             background: url('Images/SleipnirLogo.png') no-repeat center center;
             background-size: contain;
             opacity: 0.25;
@@ -133,8 +133,8 @@
         /* Make logo larger on desktop */
         @media (min-width: 1200px) {
             .about-hero-logo {
-                width: 800px;
-                height: 800px;
+                width: 1200px;
+                height: 1200px;
             }
             
             .saga::before {
@@ -158,6 +158,12 @@
                 <li><a href="about.html" class="active"><span class="is">Sagan</span><span class="en">Our Saga</span></a></li>
                 <li><a href="contact.html"><span class="is">Hafa Samband</span><span class="en">Contact</span></a></li>
             </ul>
+            <div class="language-toggle">
+                <button class="lang-btn" onclick="toggleLanguage()">
+                    <span class="is">EN</span>
+                    <span class="en">IS</span>
+                </button>
+            </div>
             <div class="member-portal">
                 <!-- Auth state will be loaded by auth.js -->
             </div>
@@ -382,6 +388,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="javascript/firebase-config.js"></script>
     <script src="javascript/auth.js"></script>
+    <script src="javascript/language.js"></script>
     <script>
         // Intersection Observer for fade-in animations
         const observerOptions = {

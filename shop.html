@@ -11,7 +11,7 @@
             margin-top: 80px;
             height: 300px;
             background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-                        radial-gradient(circle at center, rgba(255,0,0,0.1), transparent);
+                        radial-gradient(circle at center, rgba(207, 35, 66, 0.1), transparent);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -29,8 +29,8 @@
         .category-filter {
             padding: 40px 0;
             background: rgba(26,26,26,0.5);
-            border-top: 1px solid rgba(255,0,0,0.2);
-            border-bottom: 1px solid rgba(255,0,0,0.2);
+            border-top: 1px solid rgba(207, 35, 66, 0.2);
+            border-bottom: 1px solid rgba(207, 35, 66, 0.2);
         }
 
         .filter-container {
@@ -97,35 +97,7 @@
             position: relative;
         }
 
-        .restricted-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
 
-        .restricted-overlay .rune {
-            font-size: 60px;
-            color: var(--mc-red);
-            margin-bottom: 10px;
-        }
-
-        .restricted-overlay p {
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            color: var(--mc-red);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .add-to-cart.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
 
         /* Cart Sidebar */
         .cart-sidebar {
@@ -148,7 +120,7 @@
 
         .cart-header {
             padding: 20px;
-            border-bottom: 1px solid rgba(255,0,0,0.2);
+            border-bottom: 1px solid rgba(207, 35, 66, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -178,7 +150,7 @@
             background: rgba(26,26,26,0.8);
             padding: 15px;
             margin-bottom: 15px;
-            border: 1px solid rgba(255,0,0,0.1);
+            border: 1px solid rgba(207, 35, 66, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -215,7 +187,7 @@
 
         .cart-footer {
             padding: 20px;
-            border-top: 1px solid rgba(255,0,0,0.2);
+            border-top: 1px solid rgba(207, 35, 66, 0.2);
         }
 
         .cart-total {
@@ -263,14 +235,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 20px rgba(255,0,0,0.4);
+            box-shadow: 0 5px 20px rgba(207, 35, 66, 0.4);
             z-index: 1000;
             transition: all 0.3s;
         }
 
         .floating-cart-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(255,0,0,0.6);
+            box-shadow: 0 8px 30px rgba(207, 35, 66, 0.6);
         }
 
         .cart-icon {
@@ -302,7 +274,7 @@
         .spinner {
             width: 50px;
             height: 50px;
-            border: 3px solid rgba(255,0,0,0.1);
+            border: 3px solid rgba(207, 35, 66, 0.1);
             border-top-color: var(--mc-red);
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -399,7 +371,7 @@
         /* Updated Product Card */
         .shop-product-card {
             background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(10,10,10,0.9));
-            border: 1px solid rgba(255,0,0,0.1);
+            border: 1px solid rgba(207, 35, 66, 0.1);
             overflow: hidden;
             transition: all 0.4s;
             position: relative;
@@ -408,7 +380,7 @@
 
         .shop-product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(207, 35, 66, 0.3);
             border-color: var(--mc-red);
         }
 
@@ -476,6 +448,12 @@
                 <li><a href="about.html"><span class="is">Sagan</span><span class="en">Our Saga</span></a></li>
                 <li><a href="contact.html"><span class="is">Hafa Samband</span><span class="en">Contact</span></a></li>
             </ul>
+            <div class="language-toggle">
+                <button class="lang-btn" onclick="toggleLanguage()">
+                    <span class="is">EN</span>
+                    <span class="en">IS</span>
+                </button>
+            </div>
             <div class="member-portal">
                 <!-- Auth state will be loaded by auth.js -->
             </div>
@@ -653,6 +631,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="javascript/firebase-config.js"></script>
     <script src="javascript/auth.js"></script>
+    <script src="javascript/language.js"></script>
     <script src="javascript/shop.js"></script>
 </body>
 </html>

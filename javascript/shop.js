@@ -105,16 +105,22 @@ async function addSampleProducts() {
 // Display products based on filter
 async function displayProducts() {
     const productGrid = document.getElementById('productGrid');
-    const filteredProducts = currentFilter === 'all'
+    const isMember = await checkMemberStatus();
+    
+    // Filter products based on category and member status
+    let filteredProducts = currentFilter === 'all'
         ? products
         : products.filter(p => p.category === currentFilter);
+    
+    // Hide member-only products from non-members
+    if (!isMember) {
+        filteredProducts = filteredProducts.filter(p => !p.membersOnly);
+    }
 
     if (filteredProducts.length === 0) {
         productGrid.innerHTML = '<div class="no-products"><p><span class="is">Engar vörur fundust</span><span class="en">No products found</span></p></div>';
         return;
     }
-
-    const isMember = await checkMemberStatus();
 
     productGrid.innerHTML = filteredProducts.map((product, index) => {
         const images = product.images && product.images.length > 0 ? product.images : 
@@ -123,12 +129,6 @@ async function displayProducts() {
         
         return `
         <div class="product-card shop-product-card" data-category="${product.category}" data-product-index="${index}" onclick="openProductModal('${product.id}')">
-            ${product.membersOnly && !isMember ? `
-                <div class="restricted-overlay">
-                    <span class="rune">ᛚ</span>
-                    <p><span class="is">Eingöngu Meðlimir</span><span class="en">Members Only</span></p>
-                </div>
-            ` : ''}
             
             <!-- Product Badges -->
             <div class="product-badges">
@@ -178,11 +178,10 @@ async function displayProducts() {
                         ${getSizeOptions(product.category, product.availableSizes)}
                     </div>
                 </div>
-                <button class="add-to-cart ${product.membersOnly && !isMember ? 'disabled' : ''}" 
+                <button class="add-to-cart" 
                         data-product-id="${product.id}"
                         data-product-name="${product.nameIs}"
-                        data-product-price="${product.price}"
-                        ${product.membersOnly && !isMember ? 'disabled' : ''}>
+                        data-product-price="${product.price}">
                     <span class="is">Bæta í Körfu</span>
                     <span class="en">Add to Cart</span>
                 </button>
@@ -247,7 +246,7 @@ function addProductEventListeners() {
     });
 
     // Add to cart
-    document.querySelectorAll('.add-to-cart:not(.disabled)').forEach(button => {
+    document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', function() {
             const productCard = this.closest('.product-card');
             const productId = this.dataset.productId;
@@ -552,11 +551,21 @@ async function openProductModal(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     
+    // Check member status first
+    const isMember = await checkMemberStatus();
+    
+    // Prevent non-members from viewing member-only products
+    if (product.membersOnly && !isMember) {
+        alert(currentLang === 'is' 
+            ? 'Þessi vara er eingöngu fyrir meðlimi. Vinsamlegast skráðu þig inn sem meðlimur til að skoða þessa vöru.' 
+            : 'This product is available to members only. Please login as a member to view this product.');
+        return;
+    }
+    
     currentModalProduct = product;
     modalSelectedSize = null;
     
     const modal = document.getElementById('productModal');
-    const isMember = await checkMemberStatus();
     
     // Set product name
     document.querySelector('#modalProductName .is').textContent = product.nameIs;
